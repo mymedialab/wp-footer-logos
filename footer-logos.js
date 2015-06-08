@@ -40,10 +40,7 @@ mml.footerLogos = function($) {
             $item = $loop.find('.mml-footer-logos-logo').first().clone(),
             nextIndex = parseInt($(el).find('.mml-footer-logos-next-id').val(), 10);
 
-        if ($item.find('.mml-footer-logos-add-image').size() === 0) {
-            $item.find('img').remove();
-            $item.prepend(imageLink);
-        }
+        $item.find('img').remove();
 
         function addNewRow(e) {
             var $new = $item.clone();

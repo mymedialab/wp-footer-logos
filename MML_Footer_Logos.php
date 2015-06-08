@@ -20,6 +20,7 @@ class MML_Footer_Logos extends WP_Widget
     {
         $this->textdomain = strtolower(get_class($this));
 
+        wp_register_style('mml-footer-logos', plugin_dir_url(__FILE__) . "/footer-logo-panel.css");
         wp_register_script('mml-footer-logos', plugin_dir_url(__FILE__) . "/footer-logos.js", ['jquery'], '1.0', true);
         //Init the widget
         parent::__construct($this->textdomain, __(self::WIDGET_NAME, $this->textdomain), array( 'description' => __(self::WIDGET_DESCRIPTION, $this->textdomain), 'classname' => $this->textdomain));
@@ -67,6 +68,7 @@ class MML_Footer_Logos extends WP_Widget
     public function form( $instance ) {
         wp_enqueue_media();
         wp_enqueue_script('mml-footer-logos');
+        wp_enqueue_style('mml-footer-logos');
         $title = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
         $logos = ( isset( $instance['logos'] ) && is_array($instance['logos']) ) ? $instance['logos'] : array();
 
